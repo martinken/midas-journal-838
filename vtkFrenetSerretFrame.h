@@ -75,8 +75,8 @@ protected:
   vtkFrenetSerretFrame();
   ~vtkFrenetSerretFrame();
 
-  virtual int RequestData(vtkInformation *, vtkInformationVector **, vtkInformationVector *) VTK_OVERRIDE;
-  virtual int FillInputPortInformation(int port, vtkInformation *info) VTK_OVERRIDE;
+  virtual int RequestData(vtkInformation *, vtkInformationVector **, vtkInformationVector *) override;
+  virtual int FillInputPortInformation(int port, vtkInformation *info) override;
 
   //! Computes the derivative between 2 points (Next - Last).
   //! \param [in] pointIdNext {give first point Id}
@@ -106,8 +106,8 @@ protected:
                                        double *lastNormal,
                                        double* normal );
 private:
-  vtkFrenetSerretFrame(const vtkFrenetSerretFrame&) VTK_DELETE_FUNCTION;
-  void operator=(const vtkFrenetSerretFrame&) VTK_DELETE_FUNCTION;
+  vtkFrenetSerretFrame(const vtkFrenetSerretFrame&) = delete;
+  void operator=(const vtkFrenetSerretFrame&) = delete;
 
   int ComputeBinormal; //!< If 1, a Binormal array is added to the output
   int ConsistentNormals; //!< Boolean. If 1, successive normals are computed

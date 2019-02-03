@@ -91,15 +91,15 @@ protected:
   ~vtkSplineDrivenImageSlicer();
 
   virtual int RequestData(vtkInformation *, vtkInformationVector **, 
-                          vtkInformationVector *) VTK_OVERRIDE;
+                          vtkInformationVector *) override;
 
-  virtual int FillInputPortInformation(int port, vtkInformation *info) VTK_OVERRIDE;
-  virtual int FillOutputPortInformation( int, vtkInformation*) VTK_OVERRIDE;
+  virtual int FillInputPortInformation(int port, vtkInformation *info) override;
+  virtual int FillOutputPortInformation( int, vtkInformation*) override;
   virtual int RequestInformation(vtkInformation*, vtkInformationVector**, 
-                                 vtkInformationVector*) VTK_OVERRIDE;
+                                 vtkInformationVector*) override;
 private:
-  vtkSplineDrivenImageSlicer(const vtkSplineDrivenImageSlicer&) VTK_DELETE_FUNCTION;
-  void operator=(const vtkSplineDrivenImageSlicer&) VTK_DELETE_FUNCTION;
+  vtkSplineDrivenImageSlicer(const vtkSplineDrivenImageSlicer&) = delete;
+  void operator=(const vtkSplineDrivenImageSlicer&) = delete;
 
   vtkFrenetSerretFrame* localFrenetFrames; //!< computes local tangent along path input
   vtkImageReslice* reslicer; //!< Reslicers array
