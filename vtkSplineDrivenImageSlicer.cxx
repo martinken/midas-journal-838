@@ -127,7 +127,7 @@ int vtkSplineDrivenImageSlicer::FillOutputPortInformation(
 
 int vtkSplineDrivenImageSlicer::RequestInformation (
   vtkInformation * vtkNotUsed(request),
-  vtkInformationVector** inputVector,
+  vtkInformationVector**,
   vtkInformationVector *outputVector)
 {
 
@@ -162,7 +162,7 @@ int vtkSplineDrivenImageSlicer::RequestData(
   // get the input and ouptut
   vtkImageData *input = vtkImageData::SafeDownCast(
     inInfo->Get(vtkDataObject::DATA_OBJECT()));
-  vtkImageData *inputCopy = vtkImageData::New( );
+  vtkSmartPointer<vtkImageData> inputCopy = vtkSmartPointer<vtkImageData>::New( );
   inputCopy->ShallowCopy( input );
   vtkPolyData *inputPath = vtkPolyData::SafeDownCast(
     pathInfo->Get(vtkDataObject::DATA_OBJECT()));
@@ -190,7 +190,7 @@ int vtkSplineDrivenImageSlicer::RequestData(
   // (note: not using NumberOfPoints because we want only LINES points...)
   vtkCellArray* lines = path->GetLines( );
   lines->InitTraversal( );
-  int numberOfPoints = 0;
+
   vtkIdType nbCellPoints;
   vtkIdType* points;
 
