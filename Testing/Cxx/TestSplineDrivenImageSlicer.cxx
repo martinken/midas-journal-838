@@ -28,7 +28,7 @@
 #include <vtkSmartPointer.h>
 
 
-int TestSplineDrivenImageSlicer(int argc, char** argv )
+int TestSplineDrivenImageSlicer(int, char*[] )
 {
   // Create an ellipsoid
   vtkSmartPointer<vtkImageEllipsoidSource> imgSource =

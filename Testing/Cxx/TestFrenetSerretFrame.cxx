@@ -48,7 +48,7 @@ int TestArray( vtkPolyDataAlgorithm* algo,const char* name )
   return( EXIT_SUCCESS );
 }
 
-int TestFrenetSerretFrame(int argc, char** argv )
+int TestFrenetSerretFrame(int, char*[])
 {
   // Generate a circle:
   vtkSmartPointer<vtkPoints> points =
