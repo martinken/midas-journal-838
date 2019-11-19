@@ -88,7 +88,11 @@ int vtkFrenetSerretFrame::RequestData(
   vtkCellArray* lines = output->GetLines( );
   lines->InitTraversal();
   vtkIdType nbPoints;
+#ifdef VTK_CELL_ARRAY_V2
+  const vtkIdType* points;
+#else // VTK_CELL_ARRAY_V2
   vtkIdType* points;
+#endif // VTK_CELL_ARRAY_V2
 
   int cellIdx;
   for( cellIdx = 0; cellIdx < lines->GetNumberOfCells( ); cellIdx++ )

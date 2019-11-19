@@ -192,7 +192,11 @@ int vtkSplineDrivenImageSlicer::RequestData(
   lines->InitTraversal( );
 
   vtkIdType nbCellPoints;
+#ifdef VTK_CELL_ARRAY_V2
+  const vtkIdType *points;
+#else // VTK_CELL_ARRAY_V2
   vtkIdType* points;
+#endif // VTK_CELL_ARRAY_V2
 
   vtkIdType cellId = -1;
   do{
