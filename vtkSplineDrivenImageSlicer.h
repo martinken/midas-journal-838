@@ -23,14 +23,14 @@
 //! \class vtkSplineDrivenImageSlicer
 //! \brief Reslicing of a volume along a path
 //!
-//! Straightened Curved Planar Reformation (Stretched-CPR) builds a 2D image 
-//! from an input path and an input volume. Each point of the path is 
+//! Straightened Curved Planar Reformation (Stretched-CPR) builds a 2D image
+//! from an input path and an input volume. Each point of the path is
 //! considered as the center of a 2D vtkImageReslicer. Reslicers axes are set
 //! orthogonal to the path. Reslicers output are appended on the z axis. Thus
-//! the output of this filter is a volume with central XZ- and YZ-slices 
+//! the output of this filter is a volume with central XZ- and YZ-slices
 //! corresponding to the Straightened-CPR.
 //!
-//! Input: vtkImageData (InputConnection) and vtkPolyData (PathConnection) 
+//! Input: vtkImageData (InputConnection) and vtkPolyData (PathConnection)
 //! one polyline representing the path. Typically, the output of vtkSpline can
 //! be used as path input.
 //!
@@ -88,14 +88,14 @@ public:
 
 protected:
   vtkSplineDrivenImageSlicer();
-  ~vtkSplineDrivenImageSlicer();
+  ~vtkSplineDrivenImageSlicer() override;
 
-  virtual int RequestData(vtkInformation *, vtkInformationVector **, 
+  virtual int RequestData(vtkInformation *, vtkInformationVector **,
                           vtkInformationVector *) override;
 
   virtual int FillInputPortInformation(int port, vtkInformation *info) override;
   virtual int FillOutputPortInformation( int, vtkInformation*) override;
-  virtual int RequestInformation(vtkInformation*, vtkInformationVector**, 
+  virtual int RequestInformation(vtkInformation*, vtkInformationVector**,
                                  vtkInformationVector*) override;
 private:
   vtkSplineDrivenImageSlicer(const vtkSplineDrivenImageSlicer&) = delete;
@@ -106,9 +106,9 @@ private:
 
   int     SliceExtent[2]; //!< Number of pixels nx, ny in the slice space around the center points
   double SliceSpacing[2]; //!< Pixel size sx, sy of the output slice
-  double SliceThickness; //!< Slice thickness (useful for volumic reconstruction) 
+  double SliceThickness; //!< Slice thickness (useful for volumic reconstruction)
   double Incidence; //!< Rotation of the initial normal vector.
-   
+
   vtkIdType OffsetPoint; //!< Id of the point where the reslicer proceed
   vtkIdType OffsetLine; //!< Id of the line cell where to get the reslice center
   vtkIdType ProbeInput; //!< If true, the output plane (2nd output probes the input image)
