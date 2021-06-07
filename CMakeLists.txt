@@ -2,7 +2,11 @@ message(STATUS "SplineDrivenImageSlicer: Building as a Remote VTK module")
 
 set(Module_SRCS
   vtkFrenetSerretFrame.cxx
-  vtkSplineDrivenImageSlicer.cxx  
+  vtkSplineDrivenImageSlicer.cxx
+)
+set(headers
+  vtkFrenetSerretFrame.h
+  vtkSplineDrivenImageSlicer.h
 )
 
 if (VTK_VERSION VERSION_LESS "8.90.0")
@@ -10,5 +14,6 @@ if (VTK_VERSION VERSION_LESS "8.90.0")
 else()
   vtk_module_add_module(VTK::SplineDrivenImageSlicer
     SOURCES ${Module_SRCS}
-    )
+    HEADERS ${headers}
+  )
 endif()
